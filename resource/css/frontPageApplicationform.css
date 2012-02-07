@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+.application_form_row {width:100%;margin:0;padding:0;display:inline-block}
+.application_form_row label {font:12px Verdana, Arial, Serif;color:#595959}
+.application_form_select select {margin:0 5px 0 0;padding:0;font:11px Verdana, Arial, Serif;color:#595959}
+.application_form_row input {margin:0;padding:2px;width:100%;font:11px Verdana, Arial, Serif;color:#595959}
+.application_form_row textarea {margin:0;padding:5px;width:100%;font:11px Verdana, Arial, Serif;color:#595959}
+.application_form_save .application_btn_save {width:50px;font:11px Verdana, Arial, Serif;margin-right:10px}
+.application_form_reset .application_btn_reset {font:11px Verdana, Arial, Serif;color:#29adea}
