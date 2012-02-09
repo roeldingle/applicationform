@@ -31,95 +31,63 @@ class frontPageApplicationform extends Controller_Front{
     	/*needed files*/
     	$this->importJS(__CLASS__);
     	$this->importCSS(__CLASS__);
-
-
-    	/*set the user setting
-    	$aUserSetting = $this->oGet->getRow(2,null);*/
     	
+    	/*new code*/
+    	$sHTML_position = 'id="application_form_position" title="Position" ';
     	
-    	/*set default values
-    	if(empty($aUserSetting) || isset($aArgs['reset'])){
-    		$aUserSetting = array(
-    				'username' => "skype.user",
-    				'image_type' => "balloon",
-    				'timer' => 5000,
-    				"custom"=> "0"
-    				);
+    	$aPosition = array(
+    			"-option-",
+				"HR Assistant",
+				"Illustrator",
+				"Web Designer",
+				"Html Coder",
+				"Marketer",
+				"SEO Assistant",
+				"Web Product Planner",
+				"QA Tester" );
     	
-    	}*/
-    	
-    	
-    	/*position*/
-    	$aPositions = array(
-    			"HR Assistant",
-    			"Illustrator",
-    			"Web Designer",
-    			"Html Coder",
-    			"Marketer",
-    			"SEO Assistant",
-    			"Web Product Planner",
-    			"QA Tester" );
-		
-    	$sHTML_position = '';
-    	$sHTML_position .= '<span class="application_form_select"><select name="position" title="position" ><option value="none" >-position desired-</option>';
-    	
-    	foreach($aPositions as $key=>$val){
-    		$sHTML_position .= '<option value="'.$val.'" >'.$val.'</option>';
+    	$sHTML_position_opt = '';
+    	foreach($aPosition as $key=>$val){
+    		$sHTML_position_opt .= '<option value="'.$val.'" >'.$val.'</option>';
     	}
     	
-    	$sHTML_position .= '</select></span>';
-    	
     	/*salary*/
+    	$sHTML_salary = 'id="application_form_salary" title="salary" ';
+    	
     	$aSalary = array(
+    			"-option-",
     			"above 20,000",
     			"15,000 - 20,000",
     			"10,000 - 15,000",
     			"below 10,000" );
     	
-    	$sHTML_salary = '';
-    	$sHTML_salary .= '<span class="application_form_select"><select name="position" title="position" ><option value="none" >-expected salary-</option>';
-    	
+    	$sHTML_salary_opt = '';
     	foreach($aSalary as $key=>$val){
-    		$sHTML_salary .= '<option value="'.$val.'" >'.$val.'</option>';
+    		$sHTML_salary_opt .= '<option value="'.$val.'" >'.$val.'</option>';
     	}
     	
-    	$sHTML_salary .= '</select></span>';
     	
-    	
-    	/*name*/
-    	$sHTML_name = '<span class="application_form_row"><input type="text" name="name" title="name" value="Name" ></span>';
-    	
-    	/*address*/
-    	$sHTML_address = '<span class="application_form_row"><textarea name="address" title="address" >Address</textarea></span>';
-    	
-    	/*contactnum*/
-    	$sHTML_contactnum = '<span class="application_form_row"><input type="text" name="contactnum" title="contactnum" value="Contact number" ></span>';
-    	
-    	/*email*/
-    	$sHTML_email = '<span class="application_form_row"><input type="text" name="email" title="email" value="E-mail" ></span>';
-    	
-    	/*yr_exp*/
-    	$sHTML_yr_exp = '<span class="application_form_row"><input type="text" name="yr_exp" title="yr_exp" value="Year of Experience" ></span>';
-    	
-    	/*description of career*/
-    	$sHTML_des_car = '<span class="application_form_row"><textarea name="des_car" title="des_car"  >Career description</textarea></span>';
-    	
-    	/*save*/
-    	$sHTML_save = '<span class="application_form_save"><input type="submit" name="save" title="save" value="Save" class="application_btn_save" ></span>';
-    	
-    	/*reset*/
-    	$sHTML_reset = '<span class="application_form_reset"><a href="#" name="reset" title="reset" class="application_btn_reset">Reset</a></span>';
-    	
+    	$sHTML_name = 'id="application_form_name" title="Name" ';
+    	$sHTML_address = 'id="application_form_address" title="Address" ';
+    	$sHTML_contactnum = 'id="application_form_contactnum" title="Contactnum" ';
+    	$sHTML_email = 'id="application_form_email" title="Email" ';
+    	$sHTML_yr_exp = 'id="application_form_yr_exp" title="Yr_exp" ';
+    	$sHTML_des_car = 'id="application_form_des_car" title="Des_car" ';
+    	$sHTML_save = 'frontPageApplicationform.form_submit();';
+    	$sHTML_reset = 'frontPageApplicationform.reset_default();';
     	
 		/*assigns*/
-    	$this->assign("sHTML_position",$sHTML_position);
-    	$this->assign("sHTML_salary",$sHTML_salary);
-    	$this->assign("sHTML_name",$sHTML_name);
-    	$this->assign("sHTML_address",$sHTML_address);
-    	$this->assign("sHTML_contactnum",$sHTML_contactnum);
-    	$this->assign("sHTML_email",$sHTML_email);
-    	$this->assign("sHTML_yr_exp",$sHTML_yr_exp);
-    	$this->assign("sHTML_des_car",$sHTML_des_car);
+    	$this->assign("application_form_position",$sHTML_position);
+    	$this->assign("sHTML_position_opt",$sHTML_position_opt);
+    	$this->assign("application_form_salary",$sHTML_salary);
+    	$this->assign("sHTML_salary_opt",$sHTML_salary_opt);
+    	
+    	$this->assign("application_form_name",$sHTML_name);
+    	$this->assign("application_form_address",$sHTML_address);
+    	$this->assign("application_form_contactnum",$sHTML_contactnum);
+    	$this->assign("application_form_email",$sHTML_email);
+    	$this->assign("application_form_yr_exp",$sHTML_yr_exp);
+    	$this->assign("application_form_des_car",$sHTML_des_car);
     	
     	$this->assign("sHTML_save",$sHTML_save);
     	$this->assign("sHTML_reset",$sHTML_reset);

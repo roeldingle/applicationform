@@ -1,7 +1,7 @@
 <?php
 class modelExec extends Model{
 	
-	protected $PG_NAME = "skypestatus";
+	protected $PG_NAME = "applicationform";
 	protected $PG_MAIN = null;
 	protected $PG_SETTING = null;
 	protected $PG_CONTENT = null;
@@ -10,12 +10,12 @@ class modelExec extends Model{
 	{
 		$this->PG_MAIN = $this->PG_NAME.'_main';
 		$this->PG_SETTING = $this->PG_NAME.'_settings';
-		$this->PG_CONTENT = $this->PG_NAME.'_content';
+		$this->PG_CONTENT = $this->PG_NAME.'_contents';
 	
 	}
 	/*
 	 desc: choose the table to use;
-	@param $iTable = ex.(1=PG_MAIN || 2=PG_SETTING || 3=PG_CONTENT);
+	@param $iTable = ex.(1=PG_MAIN || 2=PG_SETTING || 3=PG_CONTENTS);
 	return $sTable = the tablename;
 	*/
 	public function chooseTable($iTable)
