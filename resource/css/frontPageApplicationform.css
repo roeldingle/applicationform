@@ -6,6 +6,7 @@
 #application_form_address,
 #application_form_contactnum,
 #application_form_email,
+#application_form_reemail,
 #application_form_yr_exp,
 #application_form_des_car{width:100%;}
 
@@ -16,8 +17,8 @@
 .err_mess{font-style:italic !important;color:#FA2C11;font-size:10px;}
 
 
-#applicationform_mess{padding-top:30%;width:100%;height:73% !important;color:#FFFF99;background:url(/_sdk/img/applicationform/tran_gray.png);text-align:center;display:none;position:absolute;top:0;left:0;font:13px Verdana, Arial;font-weight:bold;}
-#applicationform_errmess{color:#E60606;padding-top:30%;width:100%;height:73% !important;background:url(/_sdk/img/applicationform/tran_gray.png);text-align:center;display:none;position:absolute;top:0;left:0;font:14px Verdana, Arial;font-weight:bold;}
+#applicationform_mess{padding-top:30%;width:100%;height:73% !important;color:#FFFF99;background:url(/_sdk/img/applicationform/tran_gray.png);text-align:center;display:none;position:absolute;top:0;left:0;font:11px Verdana, Arial;font-weight:bold;}
+#applicationform_errmess{color:#E60606;padding-top:30%;width:100%;height:73% !important;background:url(/_sdk/img/applicationform/tran_gray.png);text-align:center;display:none;position:absolute;top:0;left:0;font:11px Verdana, Arial;font-weight:bold;}
 
 
 

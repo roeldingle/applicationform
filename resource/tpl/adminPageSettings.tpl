@@ -9,32 +9,44 @@
 
 
 <!--form for save-->		
-<form name="<?php echo $APP_NAME;?>_form"   method="POST">
+
 
 <!-- header -->
+<form  action="applicationform_search_form" method="GET" id="applicationform_search_form" name="applicationform_search_form">
 <div class="table_header_area">
     <ul class="row_1">
         <li class="search">
-	    <input type="text" title="Filename or title" class="input_text" value="" id="ListKeyword" maxlength="250" />
-    <a href="javascript:addonLists.listSearchButton();" class="btn_nor_01 btn_width_st1" title="Search Photo Gallery">Search</a>
+        
+     
+        <select id="applicationform_search_field" name="applicationform_search_field" >
+        	<option>name</option>
+        	<option>position</option>
+        </select>
+  
+        	<input type="text" title="Filename or title" class="input_text" value="<?php echo $sKeyword;?>" name="applicationform_keyword" id="applicationform_keyword" maxlength="250" />
+            <a href="javascript:adminPageSettings.submit_form();" class="btn_nor_01 btn_width_st1" title="Search Photo Gallery">Search</a>
+    
+	    
 </li>        <li class="comment">
-    <a href="/admin/sub/?module=PhotogalleryPageSeqImages&seq=1&status=all&order_index=photo_appearance&order_type=asc" class="all selected" title="Show all images">All(4)</a></li>    </ul>
+    <a href="/admin/sub/?module=PhotogalleryPageSeqImages&seq=1&status=all&order_index=photo_appearance&order_type=asc" class="all selected" title="Show all images">All(<?php echo $iCountData;?>)</a></li>    </ul>
     <ul class="row_2">
         <li>
-    <a href="#none" onclick="modulePhotogallerySeqImages.deletePopup();" class="btn_nor_01 btn_width_st1" title="Remove selected images">Remove</a></li>                <li class="show">
+    <a href="javascript:adminPageSettings.delete_list_process();"  class="btn_nor_01 btn_width_st1">Remove</a></li>                <li class="show">
     <label for="show_row">Show Rows</label>
-    <select id="show_row">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
+    <select id="show_row" name="iRows">
+   
+        <option value="10" <?php echo ($iRows ===  "10")?"selected":"";?>>10</option>
+        <option value="20" <?php echo ($iRows === "20")?"selected":"";?>>20</option>
+        <option value="30" <?php echo ($iRows === "30")?"selected":"";?>>30</option>
+        <option value="50" <?php echo ($iRows === "50")?"selected":"";?>>50</option>
+        <option value="100" <?php echo ($iRows === "100")?"selected":"";?>>100</option>
     </select>
 </li>                		    </ul>
 </div>
+</form>
 <!-- end header -->
 
-
+<form name="<?php echo $APP_NAME;?>_form"   method="POST">
 <!-- table -->
 <table border="1" cellpadding="0" cellspacing="0" class="table_hor_02" >
 		<colgroup>
@@ -49,22 +61,24 @@
 		</colgroup>
 	<thead>
 		<tr>
-		    <th class="chk"><input type="checkbox" class="input_chk chk_all" id="helloroel_chk_all"   /></th>
+		    <th class="chk"><input type="checkbox" class="input_chk chk_all" id="<?php echo $APP_NAME;?>_chk_all"   /></th>
 		    <th>No.</th>
 			<th>Name</th>
-			<th>Desc</th>
-			<th>Date reg</th>
+			<th>Position</th>
+			<th>Date registered</th>
 			
 		</tr>
 	</thead>
 	<tbody>
 	
 		<!-- loop here -->
+		<?php foreach($aData as $key=>$val){?>
 			<tr>
-			<td><input type='checkbox' class="input_chk" name='helloroel_chckbox[]' value='".$val['idx']."' /></td>
-			<td>1</td><td>".$val['name']."</td><td>".$val['description']."</td>
-			<td>".date("m/d/Y h:i A",$val['date'])."</td>
+			<td><input type='checkbox' class="input_chk" name='<?php echo $APP_NAME;?>_chckbox[]' value='<?php echo $val['idx'];?>' /></td>
+			<td><?php echo $val['num'];?></td><td><a href="javascript:adminPageSettings.show_info(<?php echo $val['idx'];?>);" ><?php echo $val['name'];?></a></td><td><?php echo $val['position'];?></td>
+			<td><?php echo $val['date_reg'];?></td>
 			</tr>
+		<?php }?>
 		<!-- end loop  -->
 	
 	
@@ -72,7 +86,7 @@
 	</table>
 
 </form>
-
+<div id="pagination" ><?php echo $pagination; ?></div>
 <!--buttons
 <div class="tbl_lb_wide_btn">
 		<a href="#" class="btn_apply" onclick="adminPageSettings.setting_submit()" />Save</a>
@@ -83,6 +97,20 @@
 
 <!--form for reset-->
 <form method="POST" action="<?php echo $sUrl;?>" name="<?php echo $APP_NAME;?>_form_reset" id="<?php echo $APP_NAME;?>_form_reset" ><input type="hidden" name="<?php echo $APP_NAME;?>_reset" value="true" /></form>
+
+<!--popup box -->
+<div id='<?php echo $APP_NAME;?>_popup' style='display:none'>
+	<div class="admin_popup_contents">
+	
+	Are you sure you want to delete this entry?
+	<br />
+	<br />
+	<br />
+	<a class="btn_apply" href="javascript: void(0);" style='cursor:pointer' title="Delete" onclick="adminPageSettings.delete_from_list();"> Delete </a>
+	
+	
+	</div>
+</div>
 
 
 </body>

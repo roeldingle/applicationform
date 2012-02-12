@@ -71,6 +71,7 @@ class frontPageApplicationform extends Controller_Front{
     	$sHTML_address = 'id="application_form_address" title="Address" ';
     	$sHTML_contactnum = 'id="application_form_contactnum" title="Contactnum" ';
     	$sHTML_email = 'id="application_form_email" title="Email" ';
+    	$sHTML_reemail = 'id="application_form_reemail" title="ReEmail" ';
     	$sHTML_yr_exp = 'id="application_form_yr_exp" title="Yr_exp" ';
     	$sHTML_des_car = 'id="application_form_des_car" title="Des_car" ';
     	$sHTML_save = 'frontPageApplicationform.form_submit();';
@@ -86,6 +87,7 @@ class frontPageApplicationform extends Controller_Front{
     	$this->assign("application_form_address",$sHTML_address);
     	$this->assign("application_form_contactnum",$sHTML_contactnum);
     	$this->assign("application_form_email",$sHTML_email);
+    	$this->assign("application_form_reemail",$sHTML_reemail);
     	$this->assign("application_form_yr_exp",$sHTML_yr_exp);
     	$this->assign("application_form_des_car",$sHTML_des_car);
     	

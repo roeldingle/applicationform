@@ -90,7 +90,24 @@ class modelExec extends Model{
 		return $sData = "(".substr($sField,0,(strlen($sField)-1)).") VALUES (".substr($sValue,0,(strlen($sValue)-1)).")";
 	}
 	
-
+	public function execDeleteData($iTable,$sWhere){
+		
+		$this->init();
+		$sTable = $this->chooseTable($iTable);
+		
+		$sQuery = "DELETE FROM ".$sTable." WHERE ".$sWhere;
+	
+		$mResult = $this->query($sQuery);
+	
+		if($mResult === false){
+			$bReturn = "false";
+		}else{
+			$bReturn = "true";
+		}
+	
+		return $bReturn;
+	
+	}
 	
 		
 	

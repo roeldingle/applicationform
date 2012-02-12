@@ -1,7 +1,7 @@
 <?php
 class modelGet extends Model{
 	
-	protected $PG_NAME = "skypestatus";
+	protected $PG_NAME = "applicationform";
 	protected $PG_MAIN = null;
 	protected $PG_SETTING = null;
 	protected $PG_CONTENT = null;
@@ -10,7 +10,7 @@ class modelGet extends Model{
 	{
 		$this->PG_MAIN = $this->PG_NAME.'_main';
 		$this->PG_SETTING = $this->PG_NAME.'_settings';
-		$this->PG_CONTENT = $this->PG_NAME.'_content';
+		$this->PG_CONTENT = $this->PG_NAME.'_contents';
 	
 	}
 	/*
@@ -65,6 +65,38 @@ class modelGet extends Model{
 		
 		$mResult = $this->query($sSql, "row");
 		return $mResult;
+	
+	}
+	
+	
+	function getTbAllData($iTable,$sWhere,$aOptions){
+		
+		$this->init();
+		$sTable = $this->chooseTable($iTable);
+		
+		$sQuery = "SELECT * FROM ".$sTable.$sWhere." ORDER BY idx DESC";
+	
+		if($aOptions['limit']){
+			$sQuery .= " LIMIT ".$aOptions['offset'].",".$aOptions['limit'];
+		}
+	
+		$mResult = $this->query($sQuery, "rows");
+		return $mResult;
+	}
+	
+	function getTbCountRows($iTable,$sWhere){
+		
+		$this->init();
+		$sTable = $this->chooseTable($iTable);
+		
+		$sQuery = "SELECT * FROM ".$sTable;
+		
+		if($sWhere != null){
+			$sQuery .= $sWhere;
+		}
+		
+		$mResult = $this->query($sQuery);
+		return count($mResult);
 	
 	}
 		

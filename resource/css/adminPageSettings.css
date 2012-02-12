@@ -18,3 +18,9 @@ input.btn_apply {width:103px;height:25px !important;border:none;display:inline-b
 .btn_plus {float:left;width:21px;height:18px;margin-right:3px;background:url(/_sdk/img/skypestatus/order_plus.jpg);cursor:pointer;display:inline}
 .btn_minus {float:left;width:21px;height:18px;background:url(/_sdk/img/skypestatus/order_minus.jpg);cursor:pointer;display:inline}
 
+#applicationform_info_div{align:center;}
+#applicationform_info_table{width:100%;}
+#applicationform_info_div #applicationform_info_table td{text-align:left !important;padding:10px !important;}
+
+
+#applicationform_btn_print{margin:10px 0 0 0 ;}

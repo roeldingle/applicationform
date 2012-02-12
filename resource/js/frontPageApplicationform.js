@@ -11,6 +11,7 @@ var frontPageApplicationform= {
 			var address = ($("#application_form_address").length) ? $.trim($("#application_form_address").val()) : "NA";
 			var contactnum = ($("#application_form_contactnum").length) ? $.trim($("#application_form_contactnum").val()) : "NA";
 			var email = ($("#application_form_email").length) ? $.trim($("#application_form_email").val()) : "NA";
+			var reemail = ($("#application_form_reemail").length) ? $.trim($("#application_form_reemail").val()) : "NA";
 			var yr_exp = ($("#application_form_yr_exp").length) ? $.trim($("#application_form_yr_exp").val()) : "NA";
 			var des_car = ($("#application_form_des_car").length) ? $.trim($("#application_form_des_car").val()) : "NA";
 			
@@ -18,10 +19,17 @@ var frontPageApplicationform= {
 			
 			if(checker['bExist'] === false){
 				
+				var sdk_values = checker['sVal'].split("+");
+				var sValues = '';
+				
+				$.each(sdk_values, function(){
+					 sValues += "{$"+this+"}<br/>";
+				});
+				
 				$("#applicationform_errmess").remove();
 				$("body").children().eq(0).css("position","relative");
 				$("body").children().eq(0).prepend("<div id='applicationform_errmess' ></div>");
-				$("#applicationform_errmess").empty().append("Expecting <br/> {$"+checker['sVal']+"} <br/> on file. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
+				$("#applicationform_errmess").empty().append("Expecting <br/> "+sValues+" on file. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
 				$("#applicationform_errmess").show(0).delay(3000).fadeOut("slow");
 				
 				return;
@@ -65,6 +73,12 @@ var frontPageApplicationform= {
 					valid = false;
 			}
 			
+			if(reemail != "NA"){
+				var valid_email = frontPageApplicationform.validate("reemail",reemail);
+				if(valid_email == false)
+					valid = false;
+			}
+			
 			if(yr_exp != "NA"){
 				var valid_yr_exp = frontPageApplicationform.validate("yr_exp",yr_exp);
 				if(valid_yr_exp == false)
@@ -76,6 +90,10 @@ var frontPageApplicationform= {
 				if(valid_des_car == false)
 					valid = false;
 			}
+			
+			
+			
+			
 			
 			
 			if(valid == true){
@@ -121,14 +139,14 @@ var frontPageApplicationform= {
 			
 		},
 		
-		/*check if all sdk needed values exist*/
+		/*check if all sdk needed values exist */
 		check_sdk_values: function(){
 			
 			var aReturn = new Array();
 			var exist_all = true;
 			var sSdk_values = '';
 			
-			var aSdk_val = new Array("application_form_name");
+			var aSdk_val = new Array("application_form_name","application_form_email","application_form_reemail");
 			
 			$.each(aSdk_val, function(i, val) {
 				
@@ -181,6 +199,11 @@ var frontPageApplicationform= {
 				if(frontPageApplicationform.validateEmail(val) == false){
 					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
 				break;
+				
+			case "reemail":
+				if(frontPageApplicationform.validateEmail(val) == false || $("#"+elem+"_"+type).val() != $("#"+elem+"_email").val()){
+					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+				break;
 			
 			case "yr_exp":
 				if(isNaN(val) || val == ""){
@@ -208,8 +231,8 @@ var frontPageApplicationform= {
 			$("#application_form_salary").val($("#target option:first").val());
 			
 			/*give default style*/
-			$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_yr_exp,#application_form_des_car").val("");
-			$("#application_form_position,#application_form_salary,#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_yr_exp,#application_form_des_car").removeClass("invalid");
+			$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").val("");
+			$("#application_form_position,#application_form_salary,#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").removeClass("invalid");
 			
 		}
 		
@@ -249,6 +272,13 @@ $(document).ready(function(){
 	$('#application_form_email').keyup(function() {
 		if(frontPageApplicationform.validateEmail($(this).val()))
 			$(this).removeClass("invalid");
+	});
+	
+	/*validate reemail on keyup*/
+	$('#application_form_reemail').keyup(function() {
+		if(frontPageApplicationform.validate("reemail",$.trim($(this).val())) == true){
+			$(this).removeClass("invalid");
+		}
 	});
 	
 	/*validate dropdown on change*/
