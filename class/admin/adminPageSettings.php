@@ -8,8 +8,7 @@ class adminPageSettings extends Controller_Admin
     {
 
     require_once('builder/builderInterface.php');
-    $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-    $this->writeJs($sInitScript);
+	usbuilder()->init($this, $aArgs);
 
  	/*assign objects*/
     $this->oGet = new modelGet;
@@ -28,6 +27,7 @@ class adminPageSettings extends Controller_Admin
     	/*needed files*/
     	$this->importJS("jquery.print");
     	$this->importJS(__CLASS__);
+    	$this->importJS("table.sorter");
     	
     	$this->importCSS(__CLASS__);
     	
@@ -59,7 +59,7 @@ class adminPageSettings extends Controller_Admin
     	/*set the user setting$oModel->getTbAllData*/
     	$aUserSetting = $this->oGet->getTbAllData(3,$sWhere,$aOptions);
     	
-    	$sDate_format = 'm/d/Y';
+    	$sDate_format = 'm/d/Y g:i:s a';
     	$aData = array();
     	$iNum = $iPage+1;
     	

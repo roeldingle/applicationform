@@ -5,7 +5,15 @@ var adminPageSettings = {
 		
 		/*initialize*/
 		initialize: function(){
-			//alert(1);
+			
+			/*table sorter*/
+			if($('#table_list').attr('id') != null){
+				$('#table_list').tablesorter({
+					headers: { 0:{sorter:false},1:{sorter:false} }
+				});
+			}
+			
+			
 		},
 		
 		print: function(selector){
@@ -113,19 +121,33 @@ var adminPageSettings = {
 					},
 					success: function(data){
 						if(data.Data == "true"){
-							oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+							//oValidator.generalPurpose.getMessage(true, "Deleted successfully");
 							popup.close(adminPageSettings.APP_NAME+"_popup");
+							popup.load(""+adminPageSettings.APP_NAME+"_popup_deleted").skin("admin").layer({
+								'title': 'Delete',
+								'width': 250
+								
+							});
+							
 						}else{
 							oValidator.generalPurpose.getMessage(false, "Delete failed");
 							popup.close(adminPageSettings.APP_NAME+"_popup");
 						}
-						window.location.href = usbuilder.getUrl("adminPageSettings");
+						
 						
 					}
 						
 			});
 		},
 		
+	
+		
+		/*close the dialog and refresh*/
+		close_refresh: function(){
+			popup.close(adminPageSettings.APP_NAME+'_popup_deleted');
+			window.location.href = usbuilder.getUrl("adminPageSettings");
+			
+		},
 		
 		/*reset to default*/
 		reset_default: function(){
@@ -144,6 +166,20 @@ $(document).ready(function(){
 	
 	$("#show_row").change(function(){
 		adminPageSettings.submit_form();
+		
+	});
+	
+	/*sort change the up/down image*/
+	$(".sort_down").click(function(){
+		var type = $(this).attr("alt");
+		
+		if(type == "asc"){
+			$(this).addClass("sort_up");
+			$(this).attr("alt","desc");
+		}else{
+			$(this).removeClass("sort_up");
+			$(this).attr("alt","asc");
+		}	
 		
 	});
 	

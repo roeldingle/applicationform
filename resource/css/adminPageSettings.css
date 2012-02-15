@@ -1,6 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-#skypestatus_custom_timer{margin:15px 0 0 0}
 
 .hidden {display:none !important}
 .input_msg_b {display: block;font-family: Tahoma;font-size: 10px;font-style: italic;margin-top: 5px;margin-left:10px;color: #808080;}
@@ -9,11 +8,6 @@
 input.btn_apply {width:103px;height:25px !important;border:none;display:inline-block;text-align:center;padding:4px 0 5px 0;background:#000 url(/_sdk/img/googlemapmarker/bg_btn_input.gif) repeat-x;font-weight:bold;font-size:13px;color:#fff;text-decoration:none !important;vertical-align:middle}
 .custom_image {width:25px;height:25px}
 
-.table_input_vr .skype_username {float:left}
-.table_input_vr .skype_username_content {width:270px;display:inline-block}
-.table_input_vr .skype_username input {width:190px;padding:0 5px}
-.table_input_vr .skype_user_container {float:right;display:inline-block}
-.table_input_vr .skype_btn {float:left;margin-top:4px;margin-left:2px}
 
 .btn_plus {float:left;width:21px;height:18px;margin-right:3px;background:url(/_sdk/img/skypestatus/order_plus.jpg);cursor:pointer;display:inline}
 .btn_minus {float:left;width:21px;height:18px;background:url(/_sdk/img/skypestatus/order_minus.jpg);cursor:pointer;display:inline}
@@ -24,3 +18,6 @@ input.btn_apply {width:103px;height:25px !important;border:none;display:inline-b
 
 
 #applicationform_btn_print{margin:10px 0 0 0 ;}
+
+.table_hor_02 th a.sort_down {padding-right:10px;color:#444;text-decoration:none;background:url(/_sdk/img/applicationform/sort_down_dft.gif) right no-repeat !important;display:inline-block }
+.table_hor_02 th a.sort_up {padding-right:10px;color:#444;text-decoration:none;background:url(/_sdk/img/applicationform/sort_up_dft.gif) right no-repeat !important;display:inline-block }

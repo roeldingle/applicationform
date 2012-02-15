@@ -80,21 +80,21 @@ var frontPageApplicationform= {
 			}
 			
 			if(yr_exp != "NA"){
-				var valid_yr_exp = frontPageApplicationform.validate("yr_exp",yr_exp);
-				if(valid_yr_exp == false)
-					valid = false;
+				if(yr_exp != ""){
+					var valid_yr_exp = frontPageApplicationform.validate("yr_exp",yr_exp);
+					if(valid_yr_exp == false)
+						valid = false;
+				}
+				
 			}
 			
 			if(des_car != "NA"){
+				if(des_car != ""){
 				var valid_des_car = frontPageApplicationform.validate("des_car",des_car);
 				if(valid_des_car == false)
 					valid = false;
+				}
 			}
-			
-			
-			
-			
-			
 			
 			if(valid == true){
 				/*ajax submit*/
@@ -210,10 +210,12 @@ var frontPageApplicationform= {
 					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
+				
 			case "des_car":
-				if(val.length < 5){
+				if(val.length > 10000){
 					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
 				break;	
+				
 			}
 			
 		},
@@ -242,41 +244,8 @@ var frontPageApplicationform= {
 $(document).ready(function(){
 	
 	/*validate element on keyup*/
-	$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_yr_exp,#application_form_des_car").keyup(function() {
+	$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").keyup(function() {
 		if(frontPageApplicationform.validate(($(this).attr('title')).toLowerCase(),$.trim($(this).val())) == true){
-			$(this).removeClass("invalid");
-		}
-	});
-	
-	/*validate #application_form_contactnum on keyup*/
-	$('#application_form_contactnum').keyup(function() {
-		if(frontPageApplicationform.validate("contactnum",$.trim($(this).val())) == true){
-			$(this).removeClass("invalid");
-		}
-	});
-	
-	/*validate #application_form_des_car on keyup*/
-	$('#application_form_des_car').keyup(function() {
-		if(frontPageApplicationform.validate("des_car",$.trim($(this).val())) == true){
-			$(this).removeClass("invalid");
-		}
-	});
-	
-	/*validate #application_form_contactnum, #application_form_yr_exp on keyup*/
-	$('#application_form_yr_exp').keyup(function() {
-		if(isNaN($(this).val())== false)
-			$(this).removeClass("invalid");
-	});
-	
-	/*validate email on keyup*/
-	$('#application_form_email').keyup(function() {
-		if(frontPageApplicationform.validateEmail($(this).val()))
-			$(this).removeClass("invalid");
-	});
-	
-	/*validate reemail on keyup*/
-	$('#application_form_reemail').keyup(function() {
-		if(frontPageApplicationform.validate("reemail",$.trim($(this).val())) == true){
 			$(this).removeClass("invalid");
 		}
 	});

@@ -6,10 +6,8 @@ class frontPageApplicationform extends Controller_Front{
     protected function run($aArgs)
     {
 
-    require_once 'builder/builderInterface.php';
-		
-	$sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-	$this->writeJs($sInitScript);
+    require_once('builder/builderInterface.php');
+	usbuilder()->init($this, $aArgs);
     
  	/*assign objects*/
     $this->oGet = new modelGet;
@@ -44,6 +42,8 @@ class frontPageApplicationform extends Controller_Front{
 				"Marketer",
 				"SEO Assistant",
 				"Web Product Planner",
+    			"PHP Programmer",
+    			"IT Staff",
 				"QA Tester" );
     	
     	$sHTML_position_opt = '';
@@ -71,7 +71,7 @@ class frontPageApplicationform extends Controller_Front{
     	$sHTML_address = 'id="application_form_address" title="Address" ';
     	$sHTML_contactnum = 'id="application_form_contactnum" title="Contactnum" ';
     	$sHTML_email = 'id="application_form_email" title="Email" ';
-    	$sHTML_reemail = 'id="application_form_reemail" title="ReEmail" ';
+    	$sHTML_reemail = 'id="application_form_reemail" title="Reemail" ';
     	$sHTML_yr_exp = 'id="application_form_yr_exp" title="Yr_exp" ';
     	$sHTML_des_car = 'id="application_form_des_car" title="Des_car" ';
     	$sHTML_save = 'frontPageApplicationform.form_submit();';

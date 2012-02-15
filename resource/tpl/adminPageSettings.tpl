@@ -48,7 +48,7 @@
 
 <form name="<?php echo $APP_NAME;?>_form"   method="POST">
 <!-- table -->
-<table border="1" cellpadding="0" cellspacing="0" class="table_hor_02" >
+<table border="1" cellpadding="0" cellspacing="0" class="table_hor_02" id="table_list" >
 		<colgroup>
 		
 		        <col width="44px" />
@@ -63,13 +63,20 @@
 		<tr>
 		    <th class="chk"><input type="checkbox" class="input_chk chk_all" id="<?php echo $APP_NAME;?>_chk_all"   /></th>
 		    <th>No.</th>
-			<th>Name</th>
-			<th>Position</th>
-			<th>Date registered</th>
-			
+			<th id="<?php echo $APP_NAME;?>_name_asc"  ><a class="sort_down" alt="asc" title="name" href="#" >Name</a></th>
+			<th id="<?php echo $APP_NAME;?>_position_asc"><a class="sort_down" alt="asc" title="position" href="#" >Position</a></th>
+			<th id="<?php echo $APP_NAME;?>_date_reg_asc"><a class="sort_down" alt="asc" title="date_reg" href="#" >Date registered</a></th>
 		</tr>
 	</thead>
 	<tbody>
+	
+		<?php 
+			if(count($aData) < 1){?>
+				<tr>
+			<td colspan="5" >No record(s)</td>
+			</tr>
+				
+		<?php }else{?>
 	
 		<!-- loop here -->
 		<?php foreach($aData as $key=>$val){?>
@@ -80,6 +87,8 @@
 			</tr>
 		<?php }?>
 		<!-- end loop  -->
+		
+	<?php }?>
 	
 	
 	</tbody>
@@ -107,6 +116,20 @@
 	<br />
 	<br />
 	<a class="btn_apply" href="javascript: void(0);" style='cursor:pointer' title="Delete" onclick="adminPageSettings.delete_from_list();"> Delete </a>
+	
+	
+	</div>
+</div>
+
+<!--deleted successfully -->
+<div id='<?php echo $APP_NAME;?>_popup_deleted' style='display:none'>
+	<div class="admin_popup_contents">
+	
+	Deleted successfully
+	<br />
+	<br />
+	<br />
+	<a class="btn_apply" href="javascript: void(0);" style='cursor:pointer' title="Delete" onclick="adminPageSettings.close_refresh();"> Close </a>
 	
 	
 	</div>
