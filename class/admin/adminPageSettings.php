@@ -36,9 +36,14 @@ class adminPageSettings extends Controller_Admin
     	$this->writeJs($sFormScript);
     	
     	usbuilder()->validator(array('form' => 'applicationform_search_form'));
+    	
+    	/*sequence*/
+    	$iSeq = $aArgs['seq'];
+    	$this->assign('iSeq', $iSeq);
+    	
     
     	$sKeyword = ($aArgs['applicationform_keyword'])?$aArgs['applicationform_keyword']:"";
-    	$sWhere = ($aArgs['applicationform_search_field'])?" WHERE ".$aArgs['applicationform_search_field']." LIKE  '%".$sKeyword."%' ":null;
+    	$sWhere = ($aArgs['applicationform_search_field'])?" WHERE seq =".$iSeq." AND ".$aArgs['applicationform_search_field']." LIKE  '%".$sKeyword."%' ":" WHERE seq =".$iSeq;
     	
     	//pagination
     	$iRows = ($aArgs['iRows'])?$aArgs['iRows']:10;
@@ -53,6 +58,8 @@ class adminPageSettings extends Controller_Admin
     			"offset" =>  $iPage,
     			"limit" => $iRows
     	);
+    	
+    	
     	
     	
     	

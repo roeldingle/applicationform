@@ -5,7 +5,7 @@
 
 <!-- hidden values -->
 <input type="hidden"  id="APP_NAME" value="<?php echo $APP_NAME;?>" />
-
+<input type="hidden" id="SEQ" value="<?php echo $iSeq;?>" /><!--pluginurl-->
 
 
 <!--form for save-->		
