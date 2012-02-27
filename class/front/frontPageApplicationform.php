@@ -11,6 +11,8 @@ class frontPageApplicationform extends Controller_Front{
     
  	/*assign objects*/
     $this->oGet = new modelGet;
+    
+    session_unset($_SESSION['seq']);
  
 	$this->display($aArgs);
 
@@ -29,6 +31,9 @@ class frontPageApplicationform extends Controller_Front{
     	/*needed files*/
     	$this->importJS(__CLASS__);
     	$this->importCSS(__CLASS__);
+    	
+    	/*sequence session*/
+    	$_SESSION['seq'] = $this->getSequence();
     	
     	/*new code*/
     	$sHTML_position = 'id="application_form_position" title="Position" ';
