@@ -16,4 +16,5 @@ CREATE TABLE IF NOT EXISTS `applicationform_contents`(
 			 `email` VARCHAR(20) NOT NULL,
 			 `yr_exp` INT NOT NULL,
 			 `des_car` TEXT NOT NULL,
+			 `date_reg` BIGINT NOT NULL,
 	PRIMARY KEY (`idx`) ); 

@@ -113,8 +113,10 @@ class modelExec extends Model{
 	function deleteContentsBySeq($aSeq)
 	{
 		$sSeqs = implode(',', $aSeq);
-		$sQuery = "Delete from applicationform_contents where seq in($sSeqs)";
-		$mResult = $this->query($sQuery);
+		$sQuery = "Delete from applicationform_settings where seq in($sSeqs)";
+		$this->query($sQuery);
+		$sQuery2 = "Delete from applicationform_contents where seq in($sSeqs)";
+		$mResult = $this->query($sQuery2);
 		return $mResult;
 	}
 	
