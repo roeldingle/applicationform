@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+
+.hidden {display:none !important}
+.input_msg_b {display: block;font-family: Tahoma;font-size: 10px;font-style: italic;margin-top: 5px;margin-left:10px;color: #808080;}
+.input_msg_b2 {display: block;font-family: Tahoma;font-size: 10px;font-style: italic;margin-top: 2px;margin-left:10px;color: #808080;}
+
+input.btn_apply {width:103px;height:25px !important;border:none;display:inline-block;text-align:center;padding:4px 0 5px 0;background:#000 url([IMG]/bg_btn_input.gif) repeat-x;font-weight:bold;font-size:13px;color:#fff;text-decoration:none !important;vertical-align:middle}
+.custom_image {width:25px;height:25px}
+
+
+.btn_plus {float:left;width:21px;height:18px;margin-right:3px;background:url([IMG]/order_plus.jpg);cursor:pointer;display:inline}
+.btn_minus {float:left;width:21px;height:18px;background:url([IMG]/order_minus.jpg);cursor:pointer;display:inline}
+
+#applicationform_info_div{align:center;}
+#applicationform_info_table{width:100%;}
+#applicationform_info_div #applicationform_info_table td{text-align:left !important;padding:10px !important;}
+
+
+#applicationform_btn_print{margin:10px 0 0 0 ;}
+
+.table_hor_02 th a.sort_down {padding-right:10px;color:#444;text-decoration:none;background:url([IMG]/sort_down_dft.gif) right no-repeat !important;display:inline-block }
+.table_hor_02 th a.sort_up {padding-right:10px;color:#444;text-decoration:none;background:url([IMG]/sort_up_dft.gif) right no-repeat !important;display:inline-block }

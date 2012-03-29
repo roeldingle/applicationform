@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<codehint>
+    <!-- This part is for variables -->
+    <var value="seq" name="This needed to distinguish the squence"></var>
+    <var value="position" name="The id to record applicant desired positions"></var>
+    <var value="salary" name="The id to record applicant expected salaries"></var>
+    <var value="name" name="The id to record applicant name"></var>
+    <var value="address" name="The id to record applicant address"></var>
+    <var value="contactnum" name="The id to record applicant contact number"></var>
+    <var value="email" name="The id to record applicant email"></var>
+    <var value="reemail" name="The id to validate applicant email"></var>
+    <var value="year_experience" name="The id to record applicant years of working experience"></var>
+    <var value="career_desc" name="The id to record applicant career description"></var>
+    
+    <var value="position_option" name="The list of positions options"></var>
+    <var value="salary_option" name="The list of expected salaries options"></var>
+    
+     <var value="save_button" name="The function to save the applicant records"></var>
+    <var value="reset_button" name="The function to reset application form"></var>
+    
+    <!-- This part is for options -->
+    <option value="row_count" name="Use row_count to set the number of records per page." type="int" default="20"></option>
+</codehint>

@@ -13,7 +13,8 @@ class apiExec extends Controller_Api
      
 	#data to insert
 	$aData = array(
-		'seq' => $_SESSION['seq'],
+		'idx' => '',
+		'seq' => $aArgs['get_seq'],
 		'position' => $aArgs['get_position'],
     	'salary' => $aArgs['get_salary'],
 		'name' => ucwords($aArgs['get_name']),

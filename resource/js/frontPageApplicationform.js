@@ -5,83 +5,89 @@ var frontPageApplicationform= {
 			
 			/*gather variables*/
 			var valid = true;
-			var position = ($("#application_form_position").length) ? $("#application_form_position").val() : "NA";
-			var salary = ($("#application_form_salary").length) ? $("#application_form_salary").val() : "NA";
-			var name = ($("#application_form_name").length) ? $.trim($("#application_form_name").val()) : "NA";
-			var address = ($("#application_form_address").length) ? $.trim($("#application_form_address").val()) : "NA";
-			var contactnum = ($("#application_form_contactnum").length) ? $.trim($("#application_form_contactnum").val()) : "NA";
-			var email = ($("#application_form_email").length) ? $.trim($("#application_form_email").val()) : "NA";
-			var reemail = ($("#application_form_reemail").length) ? $.trim($("#application_form_reemail").val()) : "NA";
-			var yr_exp = ($("#application_form_yr_exp").length) ? $.trim($("#application_form_yr_exp").val()) : "NA";
-			var des_car = ($("#application_form_des_car").length) ? $.trim($("#application_form_des_car").val()) : "NA";
+			var position = ($(".application_form_position").length) ? $(".application_form_position").val() : "NA";
+			var salary = ($(".application_form_salary").length) ? $(".application_form_salary").val() : "NA";
+			var name = ($(".application_form_name").length) ? $.trim($(".application_form_name").val()) : "NA";
+			var address = ($(".application_form_address").length) ? $.trim($(".application_form_address").val()) : "NA";
+			var contactnum = ($(".application_form_contactnum").length) ? $.trim($(".application_form_contactnum").val()) : "NA";
+			var email = ($(".application_form_email").length) ? $.trim($(".application_form_email").val()) : "NA";
+			var reemail = ($(".application_form_reemail").length) ? $.trim($(".application_form_reemail").val()) : "NA";
+			var yr_exp = ($(".application_form_yr_exp").length) ? $.trim($(".application_form_yr_exp").val()) : "NA";
+			var des_car = ($(".application_form_des_car").length) ? $.trim($(".application_form_des_car").val()) : "NA";
 			
 			var checker = frontPageApplicationform.check_sdk_values();
+			
+			
+			
 			
 			if(checker['bExist'] === false){
 				
 				var sdk_values = checker['sVal'].split("+");
 				var sValues = '';
 				
+				
+				
 				$.each(sdk_values, function(){
 					 sValues += "{$"+this+"}<br/>";
 				});
 				
-				$("#applicationform_errmess").remove();
+				$(".applicationform_errmess").remove();
 				$("body").children().eq(0).css("position","relative");
-				$("body").children().eq(0).prepend("<div id='applicationform_errmess' ></div>");
-				$("#applicationform_errmess").empty().append("Expecting <br/> "+sValues+" on file. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
-				$("#applicationform_errmess").show(0).delay(3000).fadeOut("slow");
+				$("body").children().eq(0).prepend("<div class='applicationform_errmess' ></div>");
+				$(".applicationform_errmess").empty().append("Expecting <br/> "+sValues+" on file. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
+				$(".applicationform_errmess").show(0).delay(3000).fadeOut("slow");
 				
 				return;
 				
 			}
 		
 	        /*validate*/
+			var elem = "application_form";
 			if(position != "NA"){
-				var valid_position = frontPageApplicationform.validate("position",position);
+				var valid_position = frontPageApplicationform.validate(elem+"_position",position);
 				if(valid_position == false)
 					valid = false;
 			}
-				
+			
 			if(salary != "NA"){
-				var valid_salary =frontPageApplicationform.validate("salary",salary);
+				var valid_salary =frontPageApplicationform.validate(elem+"_salary",salary);
 				if(valid_salary == false)
 					valid = false;
 			}
 					
 			if(name != "NA"){
-			var valid_name = frontPageApplicationform.validate("name",name);
+			var valid_name = frontPageApplicationform.validate(elem+"_name",name);
 				if(valid_name == false)
 					valid = false;
 			}
 			
 			if(address != "NA"){
-				var valid_address = frontPageApplicationform.validate("address",address);
+				var valid_address = frontPageApplicationform.validate(elem+"_address",address);
 				if(valid_address == false)
 					valid = false;
 			}
 			
 			if(contactnum != "NA"){
-				var valid_contactnum = frontPageApplicationform.validate("contactnum",contactnum);
+				var valid_contactnum = frontPageApplicationform.validate(elem+"_contactnum",contactnum);
 				if(valid_contactnum == false)
 					valid = false;
 			}
 			
 			if(email != "NA"){
-				var valid_email = frontPageApplicationform.validate("email",email);
+				var valid_email = frontPageApplicationform.validate(elem+"_email",email);
 				if(valid_email == false)
 					valid = false;
 			}
 			
 			if(reemail != "NA"){
-				var valid_email = frontPageApplicationform.validate("reemail",reemail);
+				var valid_email = frontPageApplicationform.validate(elem+"_reemail",reemail);
 				if(valid_email == false)
 					valid = false;
 			}
 			
 			if(yr_exp != "NA"){
 				if(yr_exp != ""){
-					var valid_yr_exp = frontPageApplicationform.validate("yr_exp",yr_exp);
+					var valid_yr_exp = frontPageApplicationform.validate(elem+"_yr_exp",yr_exp);
 					if(valid_yr_exp == false)
 						valid = false;
 				}
@@ -90,7 +96,7 @@ var frontPageApplicationform= {
 			
 			if(des_car != "NA"){
 				if(des_car != ""){
-				var valid_des_car = frontPageApplicationform.validate("des_car",des_car);
+				var valid_des_car = frontPageApplicationform.validate(elem+"_des_car",des_car);
 				if(valid_des_car == false)
 					valid = false;
 				}
@@ -116,18 +122,18 @@ var frontPageApplicationform= {
 					success: function(data){
 					
 						if(data.Data === true){
-							$("#applicationform_mess").remove();
+							$(".applicationform_mess").remove();
 							$("body").children().eq(0).css("position","relative");
-							$("body").children().eq(0).prepend("<div id='applicationform_mess' ></div>");
-							$("#applicationform_mess").empty().append("Application saved <br /> successfully! <br /><br /><img src='/_sdk/img/applicationform/save.png' >");
-							$("#applicationform_mess").show(0).delay(3000).fadeOut("slow", function(){frontPageApplicationform.reset_default();});
+							$("body").children().eq(0).prepend("<div class='applicationform_mess' ></div>");
+							$(".applicationform_mess").empty().append("Application saved <br /> successfully! <br /><br /><img src='/_sdk/img/applicationform/save.png' >");
+							$(".applicationform_mess").show(0).delay(3000).fadeOut("slow", function(){frontPageApplicationform.reset_default();});
 							
 						}else {
-							$("#applicationform_errmess").remove();
+							$(".applicationform_errmess").remove();
 							$("body").children().eq(0).css("position","relative");
-							$("body").children().eq(0).prepend("<div id='applicationform_errmess' ></div>");
-							$("#applicationform_errmess").empty().append("Error saving <br /> application. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
-							$("#applicationform_errmess").show(0).delay(3000).fadeOut("slow");
+							$("body").children().eq(0).prepend("<div class='applicationform_errmess' ></div>");
+							$(".applicationform_errmess").empty().append("Error saving <br /> application. <br /><br /><img src='/_sdk/img/applicationform/warn.png' >");
+							$(".applicationform_errmess").show(0).delay(3000).fadeOut("slow");
 						}
 				
 					}
@@ -150,7 +156,7 @@ var frontPageApplicationform= {
 			
 			$.each(aSdk_val, function(i, val) {
 				
-				if($("#"+val).length <= 0){
+				if($("."+val).length <= 0){
 					sSdk_values += '+'+val;
 					exist_all = false;
 				}
@@ -169,51 +175,51 @@ var frontPageApplicationform= {
 			var elem = "application_form";
 			 
 			switch(type){
-			case "position":
-				if(val == "-option-"){$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+			case elem+"_position":
+				if(val == "-option-"){$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
-			case "salary":
+			case elem+"_salary":
 				if(val == "-option-"){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
-			case "name":
+			case elem+"_name":
 				if(val.length < 5){
-					$("#"+elem+"_"+type).addClass("invalid");
+					$("."+type).addClass("invalid");
 					return false;
 					}else{return true;}
 				break;
 				
-			case "address":
+			case elem+"_address":
 				if(val.length < 5){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
-			case "contactnum":
+			case elem+"_contactnum":
 				if(val.length < 5){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
-			case "email":
+			case elem+"_email":
 				if(frontPageApplicationform.validateEmail(val) == false){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
-			case "reemail":
-				if(frontPageApplicationform.validateEmail(val) == false || $("#"+elem+"_"+type).val() != $("#"+elem+"_email").val()){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+			case elem+"_reemail":
+				if(frontPageApplicationform.validateEmail(val) == false || $("."+type).val() != $("."+elem+"_email").val()){
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 			
-			case "yr_exp":
+			case elem+"_yr_exp":
 				if(isNaN(val) || val == ""){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;
 				
 				
-			case "des_car":
+			case elem+"_des_car":
 				if(val.length > 10000){
-					$("#"+elem+"_"+type).addClass("invalid");return false;}else{return true;}
+					$("."+type).addClass("invalid");return false;}else{return true;}
 				break;	
 				
 			}
@@ -229,12 +235,12 @@ var frontPageApplicationform= {
 		/*reset to default*/
 		reset_default: function(){
 			
-			$("#application_form_position").val($("#target option:first").val());
-			$("#application_form_salary").val($("#target option:first").val());
+			$(".application_form_position").val($(".target option:first").val());
+			$(".application_form_salary").val($(".target option:first").val());
 			
 			/*give default style*/
-			$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").val("");
-			$("#application_form_position,#application_form_salary,#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").removeClass("invalid");
+			$(".application_form_name,.application_form_address,.application_form_contactnum,.application_form_email,.application_form_reemail,.application_form_yr_exp,.application_form_des_car").val("");
+			$(".application_form_position,.application_form_salary,.application_form_name,.application_form_address,.application_form_contactnum,.application_form_email,.application_form_reemail,.application_form_yr_exp,.application_form_des_car").removeClass("invalid");
 			
 		}
 		
@@ -243,15 +249,28 @@ var frontPageApplicationform= {
 
 $(document).ready(function(){
 	
+	$(".submit").click(function(){
+		
+		 frontPageApplicationform.form_submit();
+		
+	});
+	
+	$(".reset").click(function(){
+		
+		frontPageApplicationform.reset_default();
+		
+	});
+	
 	/*validate element on keyup*/
-	$("#application_form_name,#application_form_address,#application_form_contactnum,#application_form_email,#application_form_reemail,#application_form_yr_exp,#application_form_des_car").keyup(function() {
-		if(frontPageApplicationform.validate(($(this).attr('title')).toLowerCase(),$.trim($(this).val())) == true){
+	$(".application_form_name,.application_form_address,.application_form_contactnum,.application_form_email,.application_form_reemail,.application_form_yr_exp,.application_form_des_car").keyup(function() {
+		var selector = $(this).attr('class');
+		if(frontPageApplicationform.validate($.trim(selector.replace("invalid","")),$.trim($(this).val())) == true){
 			$(this).removeClass("invalid");
 		}
 	});
 	
 	/*validate dropdown on change*/
-	$('#application_form_position, #application_form_salary').change(function() {
+	$('.application_form_position, .application_form_salary').change(function() {
 		if($(this).val() == "-option-"){
 			$(this).addClass("box");
 		}else{
